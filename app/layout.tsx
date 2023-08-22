@@ -1,6 +1,10 @@
 import './globals.css'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
+import Header from '@/components/header'
+import { cn } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <body className={cn(inter.className, 'min-h-screen flex flex-col')}>
+          <Header />
+          <div className="py-2 h-fit md:py-18 grow container">{children}</div>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }
