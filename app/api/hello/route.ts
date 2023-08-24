@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-export async function GET(req: Request) {
-  return NextResponse.json({ foo: 123, bar: '456' })
-}
-
-export async function POST(req: Request) {
-  return NextResponse.json(req.body)
+export async function GET(request: Request) {
+  const users = await prisma.user.findMany()
+  return NextResponse.json(users)
 }

@@ -9,3 +9,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          String  @id @default(uuid())
+  username    String
+  email       String  @unique
+  phoneNumber String?
+  items       Item[]
+  Bids        Bid[]
+
+  @@index([email])
+}
+
+model Item {
+  id            String    @id @default(uuid())
+  name          String
+  startingPrice Int
+  sellingPrice  Int?
+  quantity      Int
+  description   String
+  picture       String?
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @default(now())
+  seller        User      @relation(fields: [sellerId], references: [id])
+  sellerId      String
+  Bids          Bid[]
+}
+
+model Bid {
+  id        String @id @default(uuid())
+  bidder    User   @relation(fields: [bidderId], references: [id])
+  bidderId  String
+  bidAmount Int
+  item      Item   @relation(fields: [itemId], references: [id])
+  itemId    String
+}
