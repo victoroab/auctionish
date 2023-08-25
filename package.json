@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",
