@@ -12,13 +12,13 @@ datasource db {
 
 model User {
   id          String  @id @default(uuid())
-  username    String
+  username    String  @unique
   email       String  @unique
   phoneNumber String?
   items       Item[]
   Bids        Bid[]
 
-  @@index([email])
+  @@index([email, username])
 }
 
 model Item {
@@ -31,16 +31,16 @@ model Item {
   picture       String?
   createdAt     DateTime? @default(now())
   updatedAt     DateTime? @default(now())
-  seller        User      @relation(fields: [sellerId], references: [id])
-  sellerId      String
+  seller        User?     @relation(fields: [sellerId], references: [id])
+  sellerId      String?
   Bids          Bid[]
 }
 
 model Bid {
-  id        String @id @default(uuid())
-  bidder    User   @relation(fields: [bidderId], references: [id])
-  bidderId  String
-  bidAmount Int
-  item      Item   @relation(fields: [itemId], references: [id])
-  itemId    String
+  id        String  @id @default(uuid())
+  bidder    User?   @relation(fields: [bidderId], references: [id])
+  bidderId  String?
+  bidAmount Int?
+  item      Item?   @relation(fields: [itemId], references: [id])
+  itemId    String?
 }

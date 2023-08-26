@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ModeToggle } from './theme-toggle'
+import { UserButton } from '@clerk/nextjs'
 
 export default function Header() {
   return (
@@ -13,7 +14,10 @@ export default function Header() {
           <li className="hover:text-primary">Categories</li>
           <li className="hover:text-primary">Deals</li>
         </ul>
-        <ModeToggle />
+        <div className="flex items-center justify-center gap-4">
+          <ModeToggle />
+          <UserButton afterSignOutUrl="/" />
+        </div>
       </nav>
     </header>
   )
