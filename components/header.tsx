@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ModeToggle } from './theme-toggle'
-import { UserButton } from '@clerk/nextjs'
+// import { UserButton } from '@clerk/nextjs'
 
 export default function Header() {
   return (
@@ -18,7 +18,7 @@ export default function Header() {
         </ul>
         <div className="flex items-center justify-center gap-4">
           <ModeToggle />
-          <UserButton afterSignOutUrl="/" />
+          {/* <UserButton afterSignOutUrl="/" /> */}
         </div>
       </nav>
     </header>
