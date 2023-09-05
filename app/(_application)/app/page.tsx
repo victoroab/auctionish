@@ -33,14 +33,14 @@ export default function MainApp() {
     <div>
       {/* <span className="text-xl px-8">Profile</span> */}
       <section className="px-6 py-4 mb-8">
-        <Card className="w-full cursor-pointer rounded-2xl">
+        <Card className="w-full rounded-2xl">
           <CardHeader className="">
             <CardTitle className="flex items-center justify-between">
               <div className="flex items-center justify-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-muted-foreground"></div>
                 <span className="text-primary text-md">victoroab</span>
               </div>
-              <div className="font-normal text-lg flex items-center gap-3 justify-center hover:text-muted-foreground">
+              <div className="font-normal cursor-pointer text-lg flex items-center gap-3 justify-center hover:text-muted-foreground">
                 Settings
                 <GearIcon className="w-7 h-7" />
               </div>
